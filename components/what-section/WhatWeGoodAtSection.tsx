@@ -1,5 +1,5 @@
 "use client";
-import { Card, CardBody } from "@heroui/react";
+import { Button, Card, CardBody } from "@heroui/react";
 import { Code2, Server, Shield, Brain, Check } from "lucide-react";
 
 export default function WhatWeGoodAtSection() {
@@ -53,7 +53,6 @@ export default function WhatWeGoodAtSection() {
   return (
     <section className="py-16 px-4 ">
       <div className=" mx-auto">
-        {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-7xl font-bold mb-4 text-foreground">
             What We're Good At
