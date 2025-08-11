@@ -49,13 +49,6 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "GenieAura – Smart Software, Magical Results",
-    description:
-      "Modern software agency delivering web, mobile, and AI solutions for forward-thinking businesses.",
-    images: ["/logo.png"],
-  },
 };
 export const viewport: Viewport = {
   themeColor: [
