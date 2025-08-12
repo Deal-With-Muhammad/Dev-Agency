@@ -516,7 +516,7 @@
     flex: 0 0 100vw;
     min-width: 0;
     height: 100%;
-    background-color: #ffffff;
+    background-color: #000000;
     /* Changed from #010101 to white */
     user-select: none;
 }

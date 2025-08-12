@@ -177,14 +177,14 @@ export const SectionProjects = () => {
   };
 
   return (
-    <section className="projects projects-desktop">
+    <section>
       <div className="textbox">
-        <div className="subheadline-box opacity-blur" ref={subheadlineBoxRef}>
+        <div className="subheadline-box " ref={subheadlineBoxRef}>
           <Star className="subheadline-box-icon" />
           <h2 className="small-description grey">Featured Works</h2>
         </div>
         <div className="titlebox">
-          <div className="titlebox-big-gradient" />
+          <div className="" />
           <h1 className="subheadline white" ref={titleRef}>
             Pioneering Projects That Consistently{" "}
             <br className="hide-on-mobile" /> Redefine What’s Possible
@@ -213,7 +213,7 @@ export const SectionProjects = () => {
                   width={1920}
                   height={1080}
                   unoptimized
-                  className="projects-carousel-item-image"
+                  className=""
                   alt="Heavecorp project"
                 />
               </div>
