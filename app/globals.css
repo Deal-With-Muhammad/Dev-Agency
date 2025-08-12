@@ -325,6 +325,29 @@ section {
   box-shadow: inset 0 0 1vw rgba(26, 26, 26, 0.1);
 }
 
+.button2 {
+  width: fit-content;
+  height: 5.5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1vw;
+  padding-right: 0.5vw;
+  border-radius: 999px;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  gap: 1vw;
+  /* <CHANGE> Changed white border to dark border */
+  border: 1px solid rgba(255, 249, 249, 0.418);
+  /* <CHANGE> Changed white background to dark background */
+  background-color: rgba(255, 255, 255, 0.025);
+  /* <CHANGE> Changed color from white to dark */
+  color: #ffffff;
+  /* <CHANGE> Changed white shadow to dark shadow */
+  box-shadow: inset 0 0 1vw rgba(26, 26, 26, 0.1);
+}
+
 .button-circle {
   width: 1.75vw;
   height: 1.75vw;
