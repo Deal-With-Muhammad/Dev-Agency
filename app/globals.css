@@ -321,7 +321,6 @@ section {
   position: relative;
   z-index: 2;
   gap: 1vw;
-  /* <CHANGE> Changed white border to dark border */
   border: 1px solid rgba(26, 26, 26, 0.1);
   /* <CHANGE> Changed white background to dark background */
   background-color: rgba(26, 26, 26, 0.025);
