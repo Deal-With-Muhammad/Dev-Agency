@@ -5,6 +5,7 @@ import { Button } from "@heroui/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import * as THREE from "three";
+import ScatteredImages from "../scattered-images";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -130,15 +131,10 @@ export default function HeroSection() {
     >
       {/* Three.js Particles */}
       <canvas ref={canvasRef} className="absolute inset-0 z-0" />
-
       {/* Hero Content */}
       <div className="max-w-5xl w-full mx-auto px-6 md:px-12 relative z-10 text-center">
-        <h1
-          ref={titleRef}
-          className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-tight "
-        >
-          {"< "}Genie<span className="text-primary">Aura {"/>"}</span>
-        </h1>
+        <ScatteredImages />
+        <br />
 
         <p
           ref={subtitleRef}
