@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 @font-face {
   font-family: 'SF PRO TEXT 400';
   src: url('/fonts/SF Pro Text 400.ttf') format('truetype');
