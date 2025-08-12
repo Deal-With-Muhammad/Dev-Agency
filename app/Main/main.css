@@ -371,6 +371,7 @@
     height: fit-content;
     display: flex;
     flex-direction: column;
+    background-color: #000000;
 }
 
 .services-content {
@@ -459,6 +460,7 @@
 
 .projects-desktop {
     display: flex;
+        border-radius: 3rem;
 }
 
 .projects-content {
@@ -470,6 +472,7 @@
     justify-content: center;
     overflow: hidden;
     cursor: pointer;
+        border-radius: 3rem;
 }
 
 .projects-gradient-top {
@@ -505,11 +508,13 @@
     width: 100%;
     display: flex;
     height: fit-content;
+        border-radius: 3rem;
 }
 
 .projects-carousel-row {
     display: flex;
     width: 100%;
+        border-radius: 3rem;
 }
 
 .projects-carousel-item {
@@ -519,12 +524,14 @@
     background-color: #000000;
     /* Changed from #010101 to white */
     user-select: none;
+        border-radius: 3rem;
 }
 
 .projects-carousel-item-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
+        border-radius: 3rem;
 }
 
 .embla__dots {
@@ -1514,42 +1521,50 @@
     .projects {
         gap: 5vw;
         padding: 0;
+        border-radius: 3rem;
     }
 
     .projects-mobile {
         display: flex;
+        border-radius: 3rem;
     }
 
     .projects-desktop {
         display: none;
+        border-radius: 3rem;
     }
 
     .projects-content {
-        height: 90vw;
+        height: auto;
+        border-radius: 3rem;
     }
 
     .projects-gradient-top {
         height: 5vw;
+        border-radius: 3rem;
     }
 
     .projects-gradient-bottom {
         height: 5vw;
+        border-radius: 3rem;
     }
 
     .project-content-wrapper {
         width: 100%;
-        height: 120vw;
+        height: auto;
         display: flex;
+        border-radius: 3rem;
     }
 
     .projects-carousel-row {
         display: flex;
         width: 100%;
+        border-radius: 3rem;
     }
 
     .projects-carousel-item {
         flex: 0 0 100vw;
-        height: 120vw;
+        height: auto;
     }
 
     .embla__dots {

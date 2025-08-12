@@ -166,7 +166,7 @@ export const SectionServices = () => {
           <X className="calendly-overlay-widget-button-icon" />
         </div>
       </div>
-      <div className="services-content bg-black rounded-3xl">
+      <div className="services-content bg-black rounded-3xl pt-10">
         <div className="textbox">
           <div className="subheadline-box opacity-blur" ref={subheadlineBoxRef}>
             <Zap className="subheadline-box-icon" />
@@ -180,7 +180,7 @@ export const SectionServices = () => {
               Your Digital Powerhouse
             </h1>
           </div>
-          <p className="description grey" ref={descriptionRef}>
+          <p className="description text-gray-100" ref={descriptionRef}>
             Where innovation fuels transformation. We empower brands to redefine
             possibilities and thrive <br /> in the ever-evolving digital
             landscape.

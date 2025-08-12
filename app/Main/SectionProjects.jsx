@@ -179,10 +179,10 @@ export const SectionProjects = () => {
   return (
     <section>
       <div className="textbox">
-        <div className="subheadline-box " ref={subheadlineBoxRef}>
+        {/* <div className="subheadline-box " ref={subheadlineBoxRef}>
           <Star className="subheadline-box-icon" />
           <h2 className="small-description grey">Featured Works</h2>
-        </div>
+        </div> */}
         <div className="titlebox">
           <div className="" />
           <h1 className="subheadline white" ref={titleRef}>
@@ -190,7 +190,7 @@ export const SectionProjects = () => {
             <br className="hide-on-mobile" /> Redefine What’s Possible
           </h1>
         </div>
-        <p className="description grey" ref={descriptionRef}>
+        <p className="description text-gray-800" ref={descriptionRef}>
           Transforming startups, SMEs, and industry{" "}
           <br className="hide-on-desktop" /> giants into digital leaders.
         </p>
