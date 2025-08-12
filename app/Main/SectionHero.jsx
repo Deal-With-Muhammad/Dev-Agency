@@ -228,7 +228,7 @@ export const SectionHero = () => {
           <Marquee
             className="hero-content-bottom-row"
             gradient={true}
-            gradientColor="#010101"
+            gradientColor="#ffff"
             gradientWidth={250}
           >
             {[

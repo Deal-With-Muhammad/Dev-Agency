@@ -166,15 +166,17 @@ export const SectionServices = () => {
           <X className="calendly-overlay-widget-button-icon" />
         </div>
       </div>
-      <div className="services-content">
+      <div className="services-content bg-black rounded-3xl">
         <div className="textbox">
           <div className="subheadline-box opacity-blur" ref={subheadlineBoxRef}>
             <Zap className="subheadline-box-icon" />
-            <h2 className="small-description grey">Our Services</h2>
+            <h2 className="small-description text-gray-800 px-3  bg-gray-100 rounded-full ">
+              Our Services
+            </h2>
           </div>
           <div className="titlebox">
-            <div className="titlebox-gradient" />
-            <h1 className="subheadline white" ref={titleRef}>
+            <div className="" />
+            <h1 className="subheadline text-white" ref={titleRef}>
               Your Digital Powerhouse
             </h1>
           </div>
@@ -206,7 +208,7 @@ export const SectionServices = () => {
           <div className="services-content-container-top" /> */}
           <video
             src="/videos/serviceshighquality.mp4"
-            className="services-content-video"
+            className="services-content-video bg-black rounded-3xl"
             autoPlay="autoplay"
             muted
             playsInline={true}
