@@ -17,31 +17,36 @@ export default function HeroSection() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    // GSAP animations
+    // --- GSAP Intro Animation ---
     const tl = gsap.timeline();
 
-    gsap.set([titleRef.current, subtitleRef.current, buttonsRef.current], {
+    gsap.set(titleRef.current, {
+      opacity: 0,
+      scale: 2.2, // Zoomed in at start
+      y: 100,
+    });
+    gsap.set([subtitleRef.current, buttonsRef.current], {
       opacity: 0,
       y: 50,
     });
-
-    gsap.set(backgroundTextRef.current, { opacity: 0.05, scale: 0.9 });
+    gsap.set(backgroundTextRef.current, { opacity: 0.05, scale: 1.1 });
 
     tl.to(titleRef.current, {
-      duration: 1.2,
+      duration: 1.4,
       opacity: 1,
+      scale: 1,
       y: 0,
       ease: "power4.out",
     })
       .to(
         subtitleRef.current,
         { duration: 1, opacity: 1, y: 0, ease: "power3.out" },
-        "-=0.8"
+        "-=0.6"
       )
       .to(
         buttonsRef.current,
-        { duration: 1, opacity: 1, y: 0, ease: "back.out(1.7)" },
-        "-=0.6"
+        { duration: 0.8, opacity: 1, y: 0, ease: "back.out(1.7)" },
+        "-=0.4"
       );
 
     ScrollTrigger.create({
@@ -51,14 +56,14 @@ export default function HeroSection() {
       onUpdate: (self) => {
         const p = self.progress;
         gsap.to(backgroundTextRef.current, {
-          y: p * 40,
-          opacity: 0.05 - p * 0.02,
+          y: p * 50,
+          opacity: 0.05 - p * 0.03,
           duration: 0.3,
         });
       },
     });
 
-    // Three.js particles
+    // --- Three.js Particles ---
     if (canvasRef.current) {
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(
@@ -73,12 +78,13 @@ export default function HeroSection() {
       });
       renderer.setSize(window.innerWidth, window.innerHeight);
 
+      // Particle geometry
       const geometry = new THREE.BufferGeometry();
-      const count = 500;
+      const count = 800;
       const positions = new Float32Array(count * 3);
 
       for (let i = 0; i < count * 3; i++) {
-        positions[i] = (Math.random() - 0.5) * 10;
+        positions[i] = (Math.random() - 0.5) * 12;
       }
       geometry.setAttribute(
         "position",
@@ -87,16 +93,30 @@ export default function HeroSection() {
 
       const material = new THREE.PointsMaterial({
         color: "#0EA5E9",
-        size: 0.02,
+        size: 0.025,
       });
+
       const particles = new THREE.Points(geometry, material);
       scene.add(particles);
 
-      camera.position.z = 3;
+      camera.position.z = 5;
+
+      // Mouse interaction
+      let mouseX = 0;
+      let mouseY = 0;
+
+      window.addEventListener("mousemove", (e) => {
+        mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+        mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+      });
 
       function animate() {
         requestAnimationFrame(animate);
-        particles.rotation.y += 0.0008;
+
+        // Smooth rotation toward mouse position
+        particles.rotation.y += (mouseX * 0.2 - particles.rotation.y) * 0.05;
+        particles.rotation.x += (mouseY * 0.2 - particles.rotation.x) * 0.05;
+
         renderer.render(scene, camera);
       }
       animate();
@@ -108,19 +128,20 @@ export default function HeroSection() {
       ref={heroRef}
       className="relative w-full min-h-[90vh] flex items-start justify-center pt-32 overflow-hidden"
     >
-      {/* Three.js background */}
+      {/* Three.js Particles */}
       <canvas ref={canvasRef} className="absolute inset-0 z-0" />
 
-      {/* Faint background text */}
+      {/* Faint Background Text */}
       <div
         ref={backgroundTextRef}
         className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
       >
-        <div className="text-[18vw] font-black opacity-5 text-foreground/10 leading-none">
+        <div className="text-[18vw] font-black text-foreground/10 leading-none">
           CODE
         </div>
       </div>
 
+      {/* Hero Content */}
       <div className="max-w-5xl w-full mx-auto px-6 md:px-12 relative z-10 text-center">
         <h1
           ref={titleRef}
