@@ -131,23 +131,13 @@ export default function HeroSection() {
       {/* Three.js Particles */}
       <canvas ref={canvasRef} className="absolute inset-0 z-0" />
 
-      {/* Faint Background Text */}
-      <div
-        ref={backgroundTextRef}
-        className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
-      >
-        <div className="text-[18vw] font-black text-foreground/10 leading-none">
-          CODE
-        </div>
-      </div>
-
       {/* Hero Content */}
       <div className="max-w-5xl w-full mx-auto px-6 md:px-12 relative z-10 text-center">
         <h1
           ref={titleRef}
-          className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-tight bg-gradient-to-r from-primary to-cyan-400 bg-clip-text text-transparent"
+          className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-tight "
         >
-          Genie<span className="text-primary">Aura</span>
+          {"< "}Genie<span className="text-primary">Aura {"/>"}</span>
         </h1>
 
         <p
