@@ -1,4 +1,10 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
+/* @custom-variant dark (&:is(.dark *)); */
+
+@config "../tailwind.config.js";
+
 
 @font-face {
   font-family: 'SF PRO TEXT 400';

@@ -1,6 +1,6 @@
 import "./globals.css";
 import { Navigation } from "./Navigation";
-
+import { Providers } from "./providers";
 export const metadata = {
   title: "Dialedweb | Cutting-Edge Website Design & Custom Digital Solutions",
   description:
@@ -41,8 +41,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Navigation />
-        {children}
+        <Providers>
+          <Navigation />
+          {children}
+        </Providers>
       </body>
     </html>
   );
