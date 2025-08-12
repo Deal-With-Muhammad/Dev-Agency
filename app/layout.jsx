@@ -2,7 +2,7 @@ import "./globals.css";
 import { Navigation } from "./Navigation";
 
 export const metadata = {
-  title: "Dialedweb | Cutting-Edge Website Design & Custom Digital Solutions",
+  title: "Genieaura | Cutting-Edge Website Design & Custom Digital Solutions",
   description:
     "Harnessing Cutting-Edge Visualization Technology to Transform Vision into Tailored Digital Reality.",
   keywords: [
@@ -30,7 +30,7 @@ export const metadata = {
     "digital media strategy",
   ],
   openGraph: {
-    title: "Dialedweb | Cutting-Edge Website Design & Custom Digital Solutions",
+    title: "Genieaura | Cutting-Edge Website Design & Custom Digital Solutions",
     description:
       "Harnessing Cutting-Edge Visualization Technology to Transform Vision into Tailored Digital Reality.",
     images: ["/images/dwlogo.webp"],
