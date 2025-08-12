@@ -1,6 +1,6 @@
-# Dialedweb
+# Genieaura
 
-This is the landing page of a digital marcketplace platform by Dialedweb.
+This is the landing page of a digital marcketplace platform by Genieaura.
 Live on [https://dialedweb.com](https://dialedweb.com)
 
 ![dialedweb](public/images/dialedweb.png)
@@ -9,9 +9,9 @@ Live on [https://dialedweb.com](https://dialedweb.com)
 
 ## Tech stack
 
-* Next.js v14, App routing
-* Sass
-* Three.js
-* GSAP
-* Framer Motion
-* Typescript
+- Next.js v14, App routing
+- Sass
+- Three.js
+- GSAP
+- Framer Motion
+- Typescript
