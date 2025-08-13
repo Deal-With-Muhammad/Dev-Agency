@@ -20,6 +20,15 @@ import useEmblaCarousel from "embla-carousel-react";
 import { usePrevNextButtons } from "./Carousel/EmblaCarouselArrowButtons";
 import { DotButton, useDotButton } from "./Carousel/EmblaCarouselDotButton";
 import { motion } from "framer-motion";
+import {
+  SiNextdotjs,
+  SiTailwindcss,
+  SiReact,
+  SiTypescript,
+  SiSupabase,
+  SiFirebase,
+} from "react-icons/si";
+import { FaReact } from "react-icons/fa";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
@@ -27,34 +36,46 @@ const TWEEN_FACTOR_BASE = 0.25;
 
 const TECH_TOOLS = [
   {
-    icon: SiBlender,
-    name: "Blender",
+    icon: SiNextdotjs,
+    name: "Next.js",
     description:
-      "We create stunning 3D models, animations, and realistic environments for immersive experiences.",
+      "A powerful React framework for building fast, SEO-friendly, and scalable web applications.",
   },
   {
-    icon: SiAdobeaftereffects,
-    name: "After Effects",
+    icon: SiTailwindcss,
+    name: "Tailwind CSS",
     description:
-      "Dynamic motion graphics and cinematic visual effects brought to life with seamless precision.",
+      "A utility-first CSS framework for creating beautiful, responsive designs without leaving your HTML.",
   },
   {
-    icon: SiAdobephotoshop,
-    name: "Photoshop",
+    icon: FaReact,
+    name: "React Native",
     description:
-      "Precision-crafted designs and visuals with unmatched detail for polished, professional results.",
+      "A cross-platform framework to build mobile apps for iOS and Android using JavaScript and React.",
   },
   {
-    icon: SiDavinciresolve,
-    name: "DaVinci Resolve",
+    icon: SiReact,
+    name: "React.js",
     description:
-      "Professional-grade video editing and vibrant color grading for high-quality storytelling impact.",
+      "A JavaScript library for building interactive, component-based user interfaces with ease.",
   },
   {
-    icon: SiHoudini,
-    name: "Houdini",
+    icon: SiTypescript,
+    name: "TypeScript",
     description:
-      "Complex simulations and breathtaking VFX for cutting-edge creativity in every project.",
+      "A strongly typed superset of JavaScript that helps build more reliable and maintainable code.",
+  },
+  {
+    icon: SiSupabase,
+    name: "Supabase",
+    description:
+      "An open-source backend-as-a-service offering authentication, database, and storage features.",
+  },
+  {
+    icon: SiFirebase,
+    name: "Firebase",
+    description:
+      "Google's platform for building and scaling web and mobile apps with real-time databases, auth, and hosting.",
   },
 ];
 
