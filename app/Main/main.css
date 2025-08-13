@@ -1071,13 +1071,9 @@
 
 .testimonials-item {
   flex: 0 0 24vw;
-  min-width: 0;
   height: 24vw;
   padding: 2.5vw;
-  border-radius: 25px;
-  box-shadow:
-    inset 0 0 0 calc(1px + 0px) rgba(26, 26, 26, 0.075),
-    inset 0 0 5vw rgba(26, 26, 26, 0.05);
+  border-radius: 25px; 
   background-color: rgba(26, 26, 26, 0.025);
   background-image: radial-gradient(
     140% 107.13% at 50% 10%,
@@ -1136,6 +1132,16 @@
     );
   mask-composite: intersect;
 }
+
+@media (max-width: 768px) {
+  .testimonials-item {
+    width: 80vw;  
+    min-width: 80vw;
+    height: 50vw;  
+    /* background-size: 20px 20px;  */
+  }
+}
+
 
 .testimonials-item:hover {
   background-color: rgba(26, 26, 26, 0.05);
@@ -1234,14 +1240,19 @@
   align-items: center;
   justify-content: center;
   gap: 2.5vh;
-  background-color: rgba(26, 26, 26, 0.025);
-  box-shadow:
-    inset 0 0 0 calc(1px + 0px) rgba(26, 26, 26, 0.075),
-    inset 0 0 5vw rgba(26, 26, 26, 0.05);
+  background-color: rgba(26, 26, 26, 0.025); 
   border-radius: 25px;
   padding: 2vw;
   position: relative;
   overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .kpi-content-item {
+    width: 90vw;  
+    min-width: 90vw;
+    height: 40vw;  
+  }
 }
 
 .kpi-item-textbox {
@@ -1274,7 +1285,8 @@
   color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
-  background-image: linear-gradient(0deg, hsla(0, 0%, 10%, 0) 15%, #1a1a1a 80%);
+  background-image: linear-gradient(0deg, #000 15%, #1a1a1a 80%);
+  margin-bottom: 1rem;
 }
 
 .kpi-item-textbox-top-text {
