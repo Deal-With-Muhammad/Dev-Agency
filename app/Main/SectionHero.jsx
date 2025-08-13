@@ -232,24 +232,25 @@ export const SectionHero = () => {
             gradientWidth={250}
           >
             {[
-              "/logos/adobe.webp",
-              "/logos/webflow.svg",
-              "/logos/stripe.svg",
-              "/logos/adobe.webp",
-              "/logos/webflow.svg",
-              "/logos/stripe.svg",
-              "/logos/adobe.webp",
-              "/logos/webflow.svg",
-              "/logos/stripe.svg",
-              "/logos/adobe.webp",
-              "/logos/webflow.svg",
-              "/logos/stripe.svg",
-              "/logos/adobe.webp",
-              "/logos/webflow.svg",
-              "/logos/stripe.svg",
-              "/logos/adobe.webp",
-              "/logos/webflow.svg",
-              "/logos/stripe.svg",
+              "/logos/next.png",
+              "/logos/react.png",
+              "/logos/js.png",
+              "/logos/typescript.png",
+
+              "/logos/next.png",
+              "/logos/react.png",
+              "/logos/js.png",
+              "/logos/typescript.png",
+
+              "/logos/next.png",
+              "/logos/react.png",
+              "/logos/js.png",
+              "/logos/typescript.png",
+
+              "/logos/next.png",
+              "/logos/react.png",
+              "/logos/js.png",
+              "/logos/typescript.png",
             ].map((src, i) => (
               <div className="hero-content-bottom-item" key={i}>
                 <Image
