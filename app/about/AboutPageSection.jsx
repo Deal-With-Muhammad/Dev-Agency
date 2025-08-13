@@ -18,15 +18,6 @@ export const AboutPageSection = () => {
   const lineRef = useRef();
   const itemRefs = useRef([]);
 
-  const teamMembers = [
-    { name: "Idan Zeidman", title: "Co-CEO & Co-Founder" },
-    { name: "Lorenzo Noya", title: "Co-CEO & Co-Founder" },
-    { name: "Matvey Vasilyev", title: "COO & Co-Founder" },
-    { name: "Rainer Ahi", title: "CTO" },
-    { name: "Romet Kriks", title: "Motion Graphics Designer" },
-    { name: "Sardor Xujamov", title: "Visualization Expert" },
-  ];
-
   useEffect(() => {
     // title animation
     const titleSplit = new SplitText(titleRef.current, { type: "chars" });
@@ -164,36 +155,14 @@ export const AboutPageSection = () => {
           <div className="about-content-top">
             <div className="about-content-textbox">
               <div className="titlebox">
-                <div className=" " />
                 <h1 className="headline white" ref={titleRef}>
-                  A Global Network Of Talent
+                  Why us?
                 </h1>
               </div>
-              <p className="description grey opacity-blur" ref={descriptionRef}>
-                We&apos;ve assembled a team of dedicated professionals from
-                diverse backgrounds who share the same passion for your brand as
-                you do.
-              </p>
-            </div>
-            <div className="about-divider" ref={lineRef} />
-          </div>
-          <div className="about-team">
-            <div className="about-team-container">
-              {teamMembers.map((member, index) => (
-                <div
-                  className="about-team-item"
-                  key={index}
-                  ref={(el) => (itemRefs.current[index] = el)}
-                >
-                  <p className="description white">{member.name}</p>
-                  <p className="description white">{member.title}</p>
-                </div>
-              ))}
             </div>
           </div>
-          <div className="about-divider" />
+
           <div className="about-whyus">
-            <p className="description about-whyus-description grey">Why us</p>
             <p
               className="subheadline about-whyus-subheadline white"
               ref={titleRef2}
@@ -215,7 +184,7 @@ export const AboutPageSection = () => {
                   <h1 className="headline white">
                     3D/2D <br /> Animation
                   </h1>
-                  <p className="description about-sticky-item-left-textbox-description grey">
+                  <p className="description about-sticky-item-left-textbox-description ">
                     Unlock the power of storytelling with our cutting-edge 2D
                     and 3D animation. Whether you want to create vibrant
                     characters or immersive worlds, our team combines artistic
@@ -238,7 +207,7 @@ export const AboutPageSection = () => {
               <div className="about-sticky-item-left">
                 <div className="about-sticky-item-left-textbox">
                   <h1 className="headline white">AI Tuning</h1>
-                  <p className="description about-sticky-item-left-textbox-description grey">
+                  <p className="description about-sticky-item-left-textbox-description ">
                     Harness the potential of artificial intelligence to elevate
                     your projects with our AI Tuning. By integrating intelligent
                     solutions, we help you achieve precision and creativity that
@@ -261,7 +230,7 @@ export const AboutPageSection = () => {
               <div className="about-sticky-item-left">
                 <div className="about-sticky-item-left-textbox">
                   <h1 className="headline white">AR VR</h1>
-                  <p className="description about-sticky-item-left-textbox-description grey">
+                  <p className="description about-sticky-item-left-textbox-description ">
                     Step into the future of interactive experiences with our
                     Augmented Reality (AR) and Virtual Reality (VR) offerings.
                     We create captivating environments that allow users to
@@ -285,7 +254,7 @@ export const AboutPageSection = () => {
               <div className="about-sticky-item-left">
                 <div className="about-sticky-item-left-textbox">
                   <h1 className="headline white">VFX</h1>
-                  <p className="description about-sticky-item-left-textbox-description grey">
+                  <p className="description about-sticky-item-left-textbox-description ">
                     Transform your visuals into stunning spectacles with our
                     top-notch Visual Effects (VFX). From breathtaking explosions
                     to fantastical landscapes, we add that extra layer of magic

@@ -1,35 +1,62 @@
+"use client";
+
 /* eslint-disable react/jsx-key */
-import React, {
-  Suspense,
-  useCallback,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
+import { useCallback, useEffect, useRef } from "react";
 import gsap from "gsap";
 import SplitText from "gsap/src/SplitText";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { ArrowUpRight, Layers } from "lucide-react";
 import {
-  ArrowUpRight,
-  ChevronRight,
-  Hand,
-  Layers,
-  Link,
-  Send,
-} from "lucide-react";
+  SiBlender,
+  SiAdobeaftereffects,
+  SiAdobephotoshop,
+  SiDavinciresolve,
+  SiHoudini,
+  SiSlack,
+  SiGmail,
+  SiNotion,
+} from "react-icons/si";
 import useEmblaCarousel from "embla-carousel-react";
-import {
-  PrevButton,
-  NextButton,
-  usePrevNextButtons,
-} from "./Carousel/EmblaCarouselArrowButtons";
+import { usePrevNextButtons } from "./Carousel/EmblaCarouselArrowButtons";
 import { DotButton, useDotButton } from "./Carousel/EmblaCarouselDotButton";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
 const TWEEN_FACTOR_BASE = 0.25;
+
+const TECH_TOOLS = [
+  {
+    icon: SiBlender,
+    name: "Blender",
+    description:
+      "We create stunning 3D models, animations, and realistic environments for immersive experiences.",
+  },
+  {
+    icon: SiAdobeaftereffects,
+    name: "After Effects",
+    description:
+      "Dynamic motion graphics and cinematic visual effects brought to life with seamless precision.",
+  },
+  {
+    icon: SiAdobephotoshop,
+    name: "Photoshop",
+    description:
+      "Precision-crafted designs and visuals with unmatched detail for polished, professional results.",
+  },
+  {
+    icon: SiDavinciresolve,
+    name: "DaVinci Resolve",
+    description:
+      "Professional-grade video editing and vibrant color grading for high-quality storytelling impact.",
+  },
+  {
+    icon: SiHoudini,
+    name: "Houdini",
+    description:
+      "Complex simulations and breathtaking VFX for cutting-edge creativity in every project.",
+  },
+];
 
 const numberWithinRange = (number, min, max) =>
   Math.min(Math.max(number, min), max);
@@ -247,14 +274,6 @@ export const SectionTechstack = () => {
       .on("slideFocus", tweenEffects);
   }, [emblaApi, setTweenNodes, setTweenFactor, tweenEffects]);
 
-  const slideDescriptions = [
-    "We create stunning 3D models, animations, and realistic environments for immersive experiences.",
-    "Dynamic motion graphics and cinematic visual effects brought to life with seamless precision.",
-    "Precision-crafted designs and visuals with unmatched detail for polished, professional results.",
-    "Professional-grade video editing and vibrant color grading for high-quality storytelling impact.",
-    "Complex simulations and breathtaking VFX for cutting-edge creativity in every project.",
-  ];
-
   return (
     <section className="techstack">
       <div className="techstack-content">
@@ -291,12 +310,8 @@ export const SectionTechstack = () => {
                     onClick={handleVideoButtonClick}
                   >
                     <div className="button-content">
-                      <span className="small-description">
-                        See Integrations
-                      </span>
-                      <span className="small-description">
-                        See Integrations
-                      </span>
+                      <span className="small-description">See Tools</span>
+                      <span className="small-description">See Tools</span>
                     </div>
                     <div className="button-circle button-circle-white">
                       <ArrowUpRight className="button-icon button-icon-180" />
@@ -335,57 +350,32 @@ export const SectionTechstack = () => {
                     ref={emblaRef}
                   >
                     <div className="techstack-item-content-column-slider-carousel-row">
-                      <div className="techstack-item-content-column-slider-item">
-                        <div className="techstack-item-content-column-slider-item-child">
-                          <img
-                            src="/logos/blenderwhite.svg"
-                            className="techstack-item-content-column-slider-item-image"
-                            alt=""
-                          />
-                        </div>
-                      </div>
-                      <div className="techstack-item-content-column-slider-item">
-                        <div className="techstack-item-content-column-slider-item-child">
-                          <img
-                            src="/logos/ae.svg"
-                            className="techstack-item-content-column-slider-item-image"
-                            alt=""
-                          />
-                        </div>
-                      </div>
-                      <div className="techstack-item-content-column-slider-item">
-                        <div className="techstack-item-content-column-slider-item-child">
-                          <img
-                            src="/logos/photoshop.svg"
-                            className="techstack-item-content-column-slider-item-image"
-                            alt=""
-                          />
-                        </div>
-                      </div>
-                      <div className="techstack-item-content-column-slider-item">
-                        <div className="techstack-item-content-column-slider-item-child">
-                          <img
-                            src="/logos/davinciresolvewhite.svg"
-                            className="techstack-item-content-column-slider-item-image"
-                            alt=""
-                          />
-                        </div>
-                      </div>
-                      <div className="techstack-item-content-column-slider-item">
-                        <div className="techstack-item-content-column-slider-item-child">
-                          <img
-                            src="/logos/houdiniwhite.svg"
-                            className="techstack-item-content-column-slider-item-image"
-                            alt=""
-                          />
-                        </div>
-                      </div>
+                      {TECH_TOOLS.map((tool, index) => {
+                        const IconComponent = tool.icon;
+                        return (
+                          <div
+                            key={index}
+                            className="techstack-item-content-column-slider-item"
+                          >
+                            <div className="techstack-item-content-column-slider-item-child">
+                              <IconComponent
+                                className="techstack-item-content-column-slider-item-image"
+                                style={{
+                                  width: "100%",
+                                  height: "100%",
+                                  color: "white",
+                                }}
+                              />
+                            </div>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
                 <div className="techstack-item-content-column-textbox">
                   <h2 className="small-subheadline white">
-                    Integration Is Key
+                    Tools That Deliver
                   </h2>
                   <motion.p
                     key={selectedIndex}
@@ -395,7 +385,7 @@ export const SectionTechstack = () => {
                     exit={{ opacity: 0, filter: "blur(10px)" }}
                     transition={{ duration: 0.5 }}
                   >
-                    {slideDescriptions[selectedIndex]}
+                    {TECH_TOOLS[selectedIndex]?.description}
                   </motion.p>
                 </div>
                 <div className="techstack-item-content-column-border" />

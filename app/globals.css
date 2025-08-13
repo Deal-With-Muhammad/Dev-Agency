@@ -725,7 +725,7 @@ section {
   line-height: 100%;
   font-family: "SF PRO DISPLAY 700", sans-serif;
   /* <CHANGE> Changed color from white to dark */
-  color: #1a1a1a;
+  color: #fff;
 }
 
 .subheadline {
