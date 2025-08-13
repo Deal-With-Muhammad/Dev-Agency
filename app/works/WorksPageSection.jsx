@@ -10,16 +10,20 @@ import {
 import useEmblaCarousel from "embla-carousel-react";
 import { ArrowUpRight, Zap } from "lucide-react";
 import { SectionFooter } from "../Main/SectionFooter";
-import { usePathname, useRouter } from "next/navigation";
 import gsap from "gsap";
 import SplitText from "gsap/src/SplitText";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Image from "next/image";
+import {
+  WORK_ITEMS,
+  INDUSTRIES,
+  CASE_STUDIES,
+  WORKS_CONTENT,
+} from "./works-data";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
 export const WorksPageSection = () => {
-  // ANIMATIONS
   const titleRef = useRef();
   const subtitleRef1 = useRef();
   const subtitleRef2 = useRef();
@@ -31,10 +35,7 @@ export const WorksPageSection = () => {
   const worksItemRef1 = useRef();
   const worksItemRef2 = useRef();
   const worksItemRef3 = useRef();
-  const industryImageRef1 = useRef();
-  const industryImageRef2 = useRef();
-  const industryImageRef3 = useRef();
-  const industryImageRef4 = useRef();
+  const industryImageRefs = useRef([]);
   const subheadlineBoxRef1 = useRef();
   const subheadlineBoxRef2 = useRef();
   const cursor = useRef();
@@ -85,61 +86,26 @@ export const WorksPageSection = () => {
       ease: "power1",
     });
 
-    // industry images
-    gsap.fromTo(
-      industryImageRef1.current,
-      { width: 0 },
-      {
-        width: "100%",
-        scrollTrigger: {
-          trigger: industryImageRef1.current,
-          start: "top bottom",
-          end: "center center",
-          scrub: true,
-        },
+    // industry images - dynamic refs
+    industryImageRefs.current.forEach((ref, index) => {
+      if (ref) {
+        gsap.fromTo(
+          ref,
+          { width: 0 },
+          {
+            width: "100%",
+            scrollTrigger: {
+              trigger: ref,
+              start: "top bottom",
+              end: "center center",
+              scrub: true,
+            },
+          }
+        );
       }
-    );
-    gsap.fromTo(
-      industryImageRef2.current,
-      { width: 0 },
-      {
-        width: "100%",
-        scrollTrigger: {
-          trigger: industryImageRef2.current,
-          start: "top bottom",
-          end: "center center",
-          scrub: true,
-        },
-      }
-    );
-    gsap.fromTo(
-      industryImageRef3.current,
-      { width: 0 },
-      {
-        width: "100%",
-        scrollTrigger: {
-          trigger: industryImageRef3.current,
-          start: "top bottom",
-          end: "center center",
-          scrub: true,
-        },
-      }
-    );
-    gsap.fromTo(
-      industryImageRef4.current,
-      { width: 0 },
-      {
-        width: "100%",
-        scrollTrigger: {
-          trigger: industryImageRef4.current,
-          start: "top bottom",
-          end: "center center",
-          scrub: true,
-        },
-      }
-    );
+    });
 
-    // case studies wrapper animation
+    // ... rest of existing animations ...
     gsap.to(carouselWrapperRef.current, {
       opacity: 1,
       filter: "blur(0px)",
@@ -148,7 +114,6 @@ export const WorksPageSection = () => {
       scrollTrigger: { trigger: carouselWrapperRef.current, start: "top 95%" },
     });
 
-    // subheadline box animation
     gsap.to(subheadlineBoxRef1.current, {
       opacity: 1,
       filter: "blur(0px)",
@@ -164,7 +129,6 @@ export const WorksPageSection = () => {
       scrollTrigger: { trigger: subheadlineBoxRef2.current, start: "top 95%" },
     });
 
-    // subtitle text animation
     const subtitleSplit1 = new SplitText(subtitleRef1.current, {
       type: "words",
     });
@@ -208,7 +172,6 @@ export const WorksPageSection = () => {
       }
     );
 
-    // description text animation
     const subdescriptionSplit1 = new SplitText(subdescriptionRef1.current, {
       type: "words",
     });
@@ -245,7 +208,7 @@ export const WorksPageSection = () => {
     );
   }, []);
 
-  // FOLLOWING CURSOR
+  // ... existing cursor and carousel logic ...
   useEffect(() => {
     let mouseX = 0;
     let mouseY = 0;
@@ -274,12 +237,8 @@ export const WorksPageSection = () => {
     };
 
     animate();
-
     window.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   useEffect(() => {
@@ -300,18 +259,12 @@ export const WorksPageSection = () => {
     }
   }, [showCursor]);
 
-  const handleMouseEnter = () => {
-    setShowCursor(true);
-  };
-
-  const handleMouseLeave = () => {
-    setShowCursor(false);
-  };
+  const handleMouseEnter = () => setShowCursor(true);
+  const handleMouseLeave = () => setShowCursor(false);
 
   // EMBLA CAROUSEL
   const [emblaRef, emblaApi] = useEmblaCarousel({ dragFree: true });
   const [emblaRef2, emblaApi2] = useEmblaCarousel({ dragFree: true });
-
   const [scrollProgress, setScrollProgress] = useState(0);
   const [scrollProgress2, setScrollProgress2] = useState(0);
 
@@ -336,14 +289,12 @@ export const WorksPageSection = () => {
 
   useEffect(() => {
     if (!emblaApi) return;
-
     const handleScroll = () => onScroll(emblaApi, setScrollProgress);
     handleScroll();
     emblaApi
       .on("reInit", handleScroll)
       .on("scroll", handleScroll)
       .on("slideFocus", handleScroll);
-
     return () =>
       emblaApi
         .off("reInit", handleScroll)
@@ -353,14 +304,12 @@ export const WorksPageSection = () => {
 
   useEffect(() => {
     if (!emblaApi2) return;
-
     const handleScroll = () => onScroll(emblaApi2, setScrollProgress2);
     handleScroll();
     emblaApi2
       .on("reInit", handleScroll)
       .on("scroll", handleScroll)
       .on("slideFocus", handleScroll);
-
     return () =>
       emblaApi2
         .off("reInit", handleScroll)
@@ -378,15 +327,14 @@ export const WorksPageSection = () => {
                 <div className="titlebox">
                   <div className="subpage- " />
                   <h1 className="headline white" ref={titleRef}>
-                    Collection of Our Works
+                    {WORKS_CONTENT.hero.title}
                   </h1>
                 </div>
                 <p
                   className="description grey opacity-blur"
                   ref={descriptionRef}
                 >
-                  Case studies offer a unique opportunity to explore real-world
-                  examples of challenges, solutions, and results.
+                  {WORKS_CONTENT.hero.description}
                 </p>
               </div>
               <div className="works-content-top-divider" ref={lineRef} />
@@ -403,175 +351,44 @@ export const WorksPageSection = () => {
               <div className="works-carousel" ref={emblaRef2}>
                 <div className="works-carousel-row">
                   <div className="works-item-padding" />
-                  <div className="works-item">
-                    <div className="works-item-content">
-                      <div className="works-item-content-textbox">
-                        <h2 className="subheadline white">Kinimatic</h2>
-                        <div className="works-item-content-textbox-row">
-                          <div className="works-item-content-textbox-button">
-                            <p className="small-description white">
-                              Web Design & Development
-                            </p>
-                          </div>
-                          <div className="works-item-content-textbox-button">
-                            <p className="small-description white">Branding</p>
-                          </div>
-                        </div>
-                      </div>
-                      <Image
-                        src="/mockups/heave.webp"
-                        className="works-item-content-image"
-                        width={750}
-                        height={750}
-                        unoptimized
-                        loading="lazy"
-                        alt="Heavecorp project"
-                      />
-                    </div>
-                    <div className="works-item-border" />
-                  </div>
-                  <div className="works-item">
-                    <div className="works-item-content">
-                      <div className="works-item-content-textbox">
-                        <h2 className="subheadline white">Vita Lenta</h2>
-                        <div className="works-item-content-textbox-row">
-                          <div className="works-item-content-textbox-button">
-                            <p className="small-description white">
-                              Web Design & Development
-                            </p>
-                          </div>
-                          <div className="works-item-content-textbox-button">
-                            <p className="small-description white">Branding</p>
+                  {WORK_ITEMS.map((item) => (
+                    <div key={item.id} className="works-item">
+                      <div className="works-item-content">
+                        <div className="works-item-content-textbox">
+                          <h2 className="subheadline black">{item.title}</h2>
+                          <div className="works-item-content-textbox-row">
+                            {item.services.map((service, index) => (
+                              <div
+                                key={index}
+                                className="works-item-content-textbox-button"
+                              >
+                                <p className="small-description black">
+                                  {service}
+                                </p>
+                              </div>
+                            ))}
                           </div>
                         </div>
+                        <Image
+                          src={item.image || "/placeholder.svg"}
+                          className="works-item-content-image"
+                          width={750}
+                          height={750}
+                          unoptimized
+                          loading="lazy"
+                          alt={item.alt}
+                        />
                       </div>
-                      <Image
-                        src="/mockups/essentia.webp"
-                        className="works-item-content-image"
-                        width={750}
-                        height={750}
-                        unoptimized
-                        loading="lazy"
-                        alt=""
-                      />
+                      <div className="works-item-border" />
                     </div>
-                    <div className="works-item-border" />
-                  </div>
-                  <div className="works-item">
-                    <div className="works-item-content">
-                      <div className="works-item-content-textbox">
-                        <h2 className="subheadline white">Peak Creations</h2>
-                        <div className="works-item-content-textbox-row">
-                          <div className="works-item-content-textbox-button">
-                            <p className="small-description white">
-                              Web Design & Development
-                            </p>
-                          </div>
-                          <div className="works-item-content-textbox-button">
-                            <p className="small-description white">Branding</p>
-                          </div>
-                        </div>
-                      </div>
-                      <Image
-                        src="/mockups/kinimatic.webp"
-                        className="works-item-content-image"
-                        width={750}
-                        height={750}
-                        unoptimized
-                        loading="lazy"
-                        alt=""
-                      />
-                    </div>
-                    <div className="works-item-border" />
-                  </div>
-                  <div className="works-item">
-                    <div className="works-item-content">
-                      <div className="works-item-content-textbox">
-                        <h2 className="subheadline white">Vita Lenta</h2>
-                        <div className="works-item-content-textbox-row">
-                          <div className="works-item-content-textbox-button">
-                            <p className="small-description white">
-                              Web Design & Development
-                            </p>
-                          </div>
-                          <div className="works-item-content-textbox-button">
-                            <p className="small-description white">Branding</p>
-                          </div>
-                        </div>
-                      </div>
-                      <Image
-                        src="/mockups/peak.webp"
-                        className="works-item-content-image"
-                        width={750}
-                        height={750}
-                        unoptimized
-                        loading="lazy"
-                        alt=""
-                      />
-                    </div>
-                    <div className="works-item-border" />
-                  </div>
-                  <div className="works-item">
-                    <div className="works-item-content">
-                      <div className="works-item-content-textbox">
-                        <h2 className="subheadline white">Vita Lenta</h2>
-                        <div className="works-item-content-textbox-row">
-                          <div className="works-item-content-textbox-button">
-                            <p className="small-description white">
-                              Web Design & Development
-                            </p>
-                          </div>
-                          <div className="works-item-content-textbox-button">
-                            <p className="small-description white">Branding</p>
-                          </div>
-                        </div>
-                      </div>
-                      <Image
-                        src="/mockups/vitalenta.webp"
-                        className="works-item-content-image"
-                        width={750}
-                        height={750}
-                        unoptimized
-                        loading="lazy"
-                        alt=""
-                      />
-                    </div>
-                    <div className="works-item-border" />
-                  </div>
-                  <div className="works-item">
-                    <div className="works-item-content">
-                      <div className="works-item-content-textbox">
-                        <h2 className="subheadline white">Rev Productions</h2>
-                        <div className="works-item-content-textbox-row">
-                          <div className="works-item-content-textbox-button">
-                            <p className="small-description white">
-                              Web Design & Development
-                            </p>
-                          </div>
-                          <div className="works-item-content-textbox-button">
-                            <p className="small-description white">Branding</p>
-                          </div>
-                        </div>
-                      </div>
-                      <Image
-                        src="/mockups/rev.webp"
-                        className="works-item-content-image"
-                        width={750}
-                        height={750}
-                        unoptimized
-                        loading="lazy"
-                        alt=""
-                      />
-                    </div>
-                    <div className="works-item-border" />
-                  </div>
+                  ))}
                   <div className="works-item">
                     <div className="works-item-last-content">
                       <p className="description white">
-                        Be our next client in this section!
+                        {WORKS_CONTENT.cta.description}
                       </p>
                       <h2 className="subheadline white">
-                        Let us get you a coffee.
+                        {WORKS_CONTENT.cta.title}
                       </h2>
                       <div className="contact-button-wrapper">
                         <button className="contact-button-white">
@@ -581,7 +398,9 @@ export const WorksPageSection = () => {
                               <span className="contact-button-complimentary-white"></span>
                             </span>
                           </span>
-                          <span className="description black">Book a call</span>
+                          <span className="description black">
+                            {WORKS_CONTENT.cta.buttonText}
+                          </span>
                         </button>
                       </div>
                     </div>
@@ -612,6 +431,7 @@ export const WorksPageSection = () => {
               </div>
             </div>
           </div>
+
           <div className="works-industries">
             <div className="works-subtextbox">
               <div
@@ -619,102 +439,49 @@ export const WorksPageSection = () => {
                 ref={subheadlineBoxRef1}
               >
                 <Zap className="subheadline-box-icon" />
-                <h2 className="small-description grey">Industries we serve</h2>
+                <h2 className="small-description grey">
+                  {WORKS_CONTENT.industries.badge}
+                </h2>
               </div>
               <div className="titlebox">
                 <div className="titlebox-medium-gradient" />
                 <h1 className="subheadline white" ref={subtitleRef1}>
-                  We have extensive experience <br /> across multiple industries
+                  {WORKS_CONTENT.industries.title}
                 </h1>
               </div>
               <p className="description grey" ref={subdescriptionRef1}>
-                Our product designers have completed projects in different
-                niches. They know how to add business value and provide.
+                {WORKS_CONTENT.industries.description}
               </p>
             </div>
             <div className="works-industries-container">
               <div className="works-industries-divider" />
-              <div className="works-industries-item">
-                <div className="works-industries-item-left">
-                  <h2 className="small-subheadline white">
-                    Supply Chain & Logistics
-                  </h2>
-                </div>
-                <div className="works-industries-item-right">
-                  <div
-                    className="works-industries-item-right-imagebox"
-                    ref={industryImageRef1}
-                  >
-                    <img
-                      src="/images/test14.webp"
-                      className="works-industries-item-right-image"
-                      alt=""
-                    />
+              {INDUSTRIES.map((industry, index) => (
+                <React.Fragment key={industry.id}>
+                  <div className="works-industries-item">
+                    <div className="works-industries-item-left">
+                      <h2 className="small-subheadline white">
+                        {industry.title}
+                      </h2>
+                    </div>
+                    <div className="works-industries-item-right">
+                      <div
+                        className="works-industries-item-right-imagebox"
+                        ref={(el) => (industryImageRefs.current[index] = el)}
+                      >
+                        <img
+                          src={industry.image || "/placeholder.svg"}
+                          className="works-industries-item-right-image"
+                          alt={industry.alt}
+                        />
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-              <div className="works-industries-divider" />
-              <div className="works-industries-item">
-                <div className="works-industries-item-left">
-                  <h2 className="small-subheadline white">
-                    Luxury Travel & Hospitality
-                  </h2>
-                </div>
-                <div className="works-industries-item-right">
-                  <div
-                    className="works-industries-item-right-imagebox"
-                    ref={industryImageRef2}
-                  >
-                    <img
-                      src="/images/test17.webp"
-                      className="works-industries-item-right-image"
-                      alt=""
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="works-industries-divider" />
-              <div className="works-industries-item">
-                <div className="works-industries-item-left">
-                  <h2 className="small-subheadline white">
-                    Real Estate & Development
-                  </h2>
-                </div>
-                <div className="works-industries-item-right">
-                  <div
-                    className="works-industries-item-right-imagebox"
-                    ref={industryImageRef3}
-                  >
-                    <img
-                      src="/images/test18.webp"
-                      className="works-industries-item-right-image"
-                      alt=""
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="works-industries-divider" />
-              <div className="works-industries-item">
-                <div className="works-industries-item-left">
-                  <h2 className="small-subheadline white">Technology & AI</h2>
-                </div>
-                <div className="works-industries-item-right">
-                  <div
-                    className="works-industries-item-right-imagebox"
-                    ref={industryImageRef4}
-                  >
-                    <img
-                      src="/images/test19.webp"
-                      className="works-industries-item-right-image"
-                      alt=""
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="works-industries-divider" />
+                  <div className="works-industries-divider" />
+                </React.Fragment>
+              ))}
             </div>
           </div>
+
           <div className="works-casestudies">
             <div className="works-subtextbox">
               <div
@@ -722,17 +489,18 @@ export const WorksPageSection = () => {
                 ref={subheadlineBoxRef2}
               >
                 <Zap className="subheadline-box-icon" />
-                <h2 className="small-description grey">Case Studies</h2>
+                <h2 className="small-description grey">
+                  {WORKS_CONTENT.caseStudies.badge}
+                </h2>
               </div>
               <div className="titlebox">
                 <div className="titlebox-medium-gradient" />
                 <h1 className="subheadline white" ref={subtitleRef2}>
-                  We have a diverse portfolio of <br /> successful case studies
+                  {WORKS_CONTENT.caseStudies.title}
                 </h1>
               </div>
               <p className="description grey" ref={subdescriptionRef2}>
-                Case studies offer a unique opportunity to explore real-world
-                examples of challenges, solutions, and results.
+                {WORKS_CONTENT.caseStudies.description}
               </p>
             </div>
             <div
@@ -744,146 +512,44 @@ export const WorksPageSection = () => {
               <div className="casestudies-carousel" ref={emblaRef}>
                 <div className="casestudies-carousel-row">
                   <div className="casestudies-item-padding" />
-                  <div className="casestudies-item">
-                    <div className="casestudies-item-content">
-                      <div className="casestudies-item-content-textbox">
-                        <div className="subheadline-box">
-                          <Zap className="subheadline-box-icon" />
-                          <h2 className="small-description grey">Marketing</h2>
-                        </div>
-                        <h3 className="small-subheadline white">
-                          Digital Market Future
-                        </h3>
-                        <p className="description grey">
-                          The New Era of the Digital Landscape: Where Do We
-                          Think the Market Is Going?
-                        </p>
-                      </div>
-                      <div className="casestudies-item-content-imagebox">
-                        <div className="button casestudies-item-content-imagebox-button">
-                          <div className="button-content">
-                            <span className="small-description white">
-                              Read More
-                            </span>
-                            <span className="small-description white">
-                              Read More
-                            </span>
+                  {CASE_STUDIES.map((study) => (
+                    <div key={study.id} className="casestudies-item">
+                      <div className="casestudies-item-content">
+                        <div className="casestudies-item-content-textbox">
+                          <div className="subheadline-box">
+                            <Zap className="subheadline-box-icon" />
+                            <h2 className="small-description grey">
+                              {study.category}
+                            </h2>
                           </div>
-                          <ArrowUpRight className="casestudies-item-content-imagebox-button-icon" />
+                          <h3 className="small-subheadline white">
+                            {study.title}
+                          </h3>
+                          <p className="description grey">
+                            {study.description}
+                          </p>
                         </div>
-                        <img
-                          src="/casestudy/cs1.webp"
-                          className="casestudies-item-content-image"
-                          alt=""
-                        />
+                        <div className="casestudies-item-content-imagebox">
+                          <div className="button casestudies-item-content-imagebox-button">
+                            <div className="button-content">
+                              <span className="small-description white">
+                                Read More
+                              </span>
+                              <span className="small-description white">
+                                Read More
+                              </span>
+                            </div>
+                            <ArrowUpRight className="casestudies-item-content-imagebox-button-icon" />
+                          </div>
+                          <img
+                            src={study.image || "/placeholder.svg"}
+                            className="casestudies-item-content-image"
+                            alt={study.alt}
+                          />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="casestudies-item">
-                    <div className="casestudies-item-content">
-                      <div className="casestudies-item-content-textbox">
-                        <div className="subheadline-box">
-                          <Zap className="subheadline-box-icon" />
-                          <h2 className="small-description grey">Marketing</h2>
-                        </div>
-                        <h3 className="small-subheadline white">
-                          Tech Evolution Ahead
-                        </h3>
-                        <p className="description grey">
-                          The New Era of the Digital Landscape: Where Do We
-                          Think the Market Is Going?
-                        </p>
-                      </div>
-                      <div className="casestudies-item-content-imagebox">
-                        <div className="button casestudies-item-content-imagebox-button">
-                          <div className="button-content">
-                            <span className="small-description white">
-                              Read More
-                            </span>
-                            <span className="small-description white">
-                              Read More
-                            </span>
-                          </div>
-                          <ArrowUpRight className="casestudies-item-content-imagebox-button-icon" />
-                        </div>
-                        <img
-                          src="/casestudy/cs4.webp"
-                          className="casestudies-item-content-image"
-                          alt=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="casestudies-item">
-                    <div className="casestudies-item-content">
-                      <div className="casestudies-item-content-textbox">
-                        <div className="subheadline-box">
-                          <Zap className="subheadline-box-icon" />
-                          <h2 className="small-description grey">Marketing</h2>
-                        </div>
-                        <h3 className="small-subheadline white">
-                          Navigating Trends
-                        </h3>
-                        <p className="description grey">
-                          The New Era of the Digital Landscape: Where Do We
-                          Think the Market Is Going?
-                        </p>
-                      </div>
-                      <div className="casestudies-item-content-imagebox">
-                        <div className="button casestudies-item-content-imagebox-button">
-                          <div className="button-content">
-                            <span className="small-description white">
-                              Read More
-                            </span>
-                            <span className="small-description white">
-                              Read More
-                            </span>
-                          </div>
-                          <ArrowUpRight className="casestudies-item-content-imagebox-button-icon" />
-                        </div>
-                        <img
-                          src="/casestudy/cs3.webp"
-                          className="casestudies-item-content-image"
-                          alt=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="casestudies-item">
-                    <div className="casestudies-item-content">
-                      <div className="casestudies-item-content-textbox">
-                        <div className="subheadline-box">
-                          <Zap className="subheadline-box-icon" />
-                          <h2 className="small-description grey">Marketing</h2>
-                        </div>
-                        <h3 className="small-subheadline white">
-                          Innovation in Motion
-                        </h3>
-                        <p className="description grey">
-                          The New Era of the Digital Landscape: Where Do We
-                          Think the Market Is Going?
-                        </p>
-                      </div>
-                      <div className="casestudies-item-content-imagebox">
-                        <div className="button casestudies-item-content-imagebox-button">
-                          <div className="button-content">
-                            <span className="small-description white">
-                              Read More
-                            </span>
-                            <span className="small-description white">
-                              Read More
-                            </span>
-                          </div>
-                          <ArrowUpRight className="casestudies-item-content-imagebox-button-icon" />
-                        </div>
-                        <img
-                          src="/casestudy/cs2.webp"
-                          className="casestudies-item-content-image"
-                          alt=""
-                        />
-                      </div>
-                    </div>
-                  </div>
+                  ))}
                   <div className="casestudies-item-padding" />
                 </div>
               </div>
@@ -912,7 +578,7 @@ export const WorksPageSection = () => {
         </div>
 
         <div className="hover-cursor" ref={cursor}>
-          <p className="small-description white">Drag</p>
+          <p className="small-description text-white">Drag</p>
         </div>
       </section>
       <SectionFooter />

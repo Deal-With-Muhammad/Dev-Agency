@@ -99,7 +99,7 @@ export const Navigation = () => {
           <p
             className="description white hover-text-white opacity"
             ref={navigationBarCenterRef3}
-            onClick={() => handleNavigate("/")}
+            onClick={() => handleNavigate("/works")}
           >
             Works
           </p>
