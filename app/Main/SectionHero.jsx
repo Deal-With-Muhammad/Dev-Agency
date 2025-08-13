@@ -235,15 +235,15 @@ export const SectionHero = () => {
               <div className="hero-titlebox">
                 <div className="hero- " />
                 <h1 className="headline hero-headline white" ref={titleRef}>
-                  Crafting Digital <br /> Masterpieces
+                  Turning Ideas <br /> Into Impact
                 </h1>
               </div>
               <p
                 className="big-description grey opacity-blur"
                 ref={descriptionRef}
               >
-                Harnessing Cutting-Edge Visualization Technology to Transform
-                Vision into Tailored Digital Reality
+                From concept to launch, we build products that are as beautiful
+                as they are powerful.
               </p>
             </div>
             <div className="hero-buttons-row">

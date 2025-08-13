@@ -145,7 +145,7 @@ export const SectionFooter = () => {
       <div className="footer-divider" ref={centerRef1} />
       <div className="footer-content-bottom">
         <p className="small-description grey" ref={bottomRef1}>
-          © 2024 Genieaura All Rights Reserved
+          © 2025 Genieaura All Rights Reserved
         </p>
         <div className="footer-socials" ref={bottomRef2}>
           <Instagram strokeWidth={1.25} className="footer-socials-icon" />
