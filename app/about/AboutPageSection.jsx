@@ -181,7 +181,7 @@ export const AboutPageSection = () => {
             <div className="about-sticky-item" ref={item1Ref}>
               <div className="about-sticky-item-left">
                 <div className="about-sticky-item-left-textbox">
-                  <h1 className="headline white">
+                  <h1 className="headline-about white">
                     3D/2D <br /> Animation
                   </h1>
                   <p className="description about-sticky-item-left-textbox-description ">
@@ -191,7 +191,7 @@ export const AboutPageSection = () => {
                     flair with technical expertise to bring your vision to life.
                   </p>
                 </div>
-                <h1 className="headline white">(01)</h1>
+                <h1 className="headline-about white">(01)</h1>
               </div>
               <div className="about-sticky-item-right">
                 <div className="about-sticky-item-right-imagebox">
@@ -206,7 +206,7 @@ export const AboutPageSection = () => {
             <div className="about-sticky-item" ref={item2Ref}>
               <div className="about-sticky-item-left">
                 <div className="about-sticky-item-left-textbox">
-                  <h1 className="headline white">AI Tuning</h1>
+                  <h1 className="headline-about white">AI Tuning</h1>
                   <p className="description about-sticky-item-left-textbox-description ">
                     Harness the potential of artificial intelligence to elevate
                     your projects with our AI Tuning. By integrating intelligent
@@ -214,7 +214,7 @@ export const AboutPageSection = () => {
                     stand out in the competitive landscape.
                   </p>
                 </div>
-                <h1 className="headline white">(02)</h1>
+                <h1 className="headline-about white">(02)</h1>
               </div>
               <div className="about-sticky-item-right">
                 <div className="about-sticky-item-right-imagebox">
@@ -229,7 +229,7 @@ export const AboutPageSection = () => {
             <div className="about-sticky-item" ref={item3Ref}>
               <div className="about-sticky-item-left">
                 <div className="about-sticky-item-left-textbox">
-                  <h1 className="headline white">AR VR</h1>
+                  <h1 className="headline-about white">AR VR</h1>
                   <p className="description about-sticky-item-left-textbox-description ">
                     Step into the future of interactive experiences with our
                     Augmented Reality (AR) and Virtual Reality (VR) offerings.
@@ -238,7 +238,7 @@ export const AboutPageSection = () => {
                     digital and real worlds seamlessly.
                   </p>
                 </div>
-                <h1 className="headline white">(03)</h1>
+                <h1 className="headline-about white">(03)</h1>
               </div>
               <div className="about-sticky-item-right">
                 <div className="about-sticky-item-right-imagebox">
@@ -253,7 +253,7 @@ export const AboutPageSection = () => {
             <div className="about-sticky-item" ref={item4Ref}>
               <div className="about-sticky-item-left">
                 <div className="about-sticky-item-left-textbox">
-                  <h1 className="headline white">VFX</h1>
+                  <h1 className="headline-about white">VFX</h1>
                   <p className="description about-sticky-item-left-textbox-description ">
                     Transform your visuals into stunning spectacles with our
                     top-notch Visual Effects (VFX). From breathtaking explosions
@@ -261,7 +261,7 @@ export const AboutPageSection = () => {
                     that captivates viewers.
                   </p>
                 </div>
-                <h1 className="headline white">(04)</h1>
+                <h1 className="headline-about white">(04)</h1>
               </div>
               <div className="about-sticky-item-right">
                 <div className="about-sticky-item-right-imagebox">

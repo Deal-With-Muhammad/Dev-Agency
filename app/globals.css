@@ -725,9 +725,18 @@ section {
   line-height: 100%;
   font-family: "SF PRO DISPLAY 700", sans-serif;
   /* <CHANGE> Changed color from white to dark */
+  color: #1a1a1a;
+}
+.headline-about {
+  position: relative;
+  font-size: 5vw;
+  margin: 0;
+  font-weight: auto;
+  line-height: 100%;
+  font-family: "SF PRO DISPLAY 700", sans-serif;
+  /* <CHANGE> Changed color from white to dark */
   color: #fff;
 }
-
 .subheadline {
   font-size: 3.25vw;
   margin: 0;
