@@ -1,6 +1,6 @@
 import "./globals.css";
+// import { Providers } from "./Providers";
 import { Navigation } from "./Navigation";
-import { Providers } from "./providers";
 export const metadata = {
   title: "Genieaura | Cutting-Edge Website Design & Custom Digital Solutions",
   description:
@@ -33,7 +33,7 @@ export const metadata = {
     title: "Genieaura | Cutting-Edge Website Design & Custom Digital Solutions",
     description:
       "Harnessing Cutting-Edge Visualization Technology to Transform Vision into Tailored Digital Reality.",
-    images: ["/images/dwlogo.webp"],
+    images: ["/logo.png"],
   },
 };
 
@@ -41,10 +41,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Providers>
-          <Navigation />
-          {children}
-        </Providers>
+        {/* <Providers> */}
+        <Navigation />
+        {children}
+        {/* </Providers> */}
       </body>
     </html>
   );

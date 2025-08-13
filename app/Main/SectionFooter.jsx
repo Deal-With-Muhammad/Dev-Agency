@@ -95,7 +95,7 @@ export const SectionFooter = () => {
     <section className="footer">
       <div className="footer-content">
         <div className="footer-content-left" ref={topRef1}>
-          <img src="/images/dwlogo.webp" className="footer-logo" alt="" />
+          <img src="/logo.png" className="footer-logo" alt="" />
           <h1 className="subheadline white">Genieaura</h1>
           <p className="description grey">
             Harnessing Cutting-Edge Visualization Technology to Transform Vision
