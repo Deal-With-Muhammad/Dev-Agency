@@ -332,7 +332,6 @@ export const SectionTechstack = () => {
                   >
                     <div className="button-content">
                       <span className="small-description">See Tools</span>
-                      <span className="small-description">See Tools</span>
                     </div>
                     <div className="button-circle button-circle-white">
                       <ArrowUpRight className="button-icon button-icon-180" />
