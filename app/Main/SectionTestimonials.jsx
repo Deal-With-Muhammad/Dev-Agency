@@ -91,10 +91,10 @@ export const SectionTestimonials = () => {
   // Testimonial data array
   const testimonials = [
     {
-      img: "/images/pfp1.webp",
-      name: "Sarah Johnson",
-      role: "Small Business Owner",
-      text: "Since integrating this solution into our workflow, we have experienced a remarkable improvement in both efficiency and team collaboration, enabling us to complete tasks more quickly and communicate more.",
+      img: "/images/hammed.png",
+      name: "Hameed Waeen",
+      role: "Curriculum Development Specialist",
+      text: "I had the pleasure of working with Muhammad on several of my web app development projects. His technical skills and innovative approach significantly contributed to the success of each project. I highly recommend him for any future opportunities in software development!",
     },
     {
       img: "/images/pfp2.webp",
