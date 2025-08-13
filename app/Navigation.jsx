@@ -73,29 +73,31 @@ export const Navigation = () => {
     <div className="navigation-wrapper">
       <div className="navigation-inside" ref={navigationBar}>
         <div className="navigation-inside-left">
-          <img
+          <Image
             src="/logo.png"
             className="navigation-inside-left-image"
             alt=""
+            height={300}
+            width={300}
           />
         </div>
         <div className="navigation-inside-big" ref={navigationBarCenter}>
           <p
-            className="small-description white hover-text-white opacity"
+            className="description white hover-text-white opacity"
             ref={navigationBarCenterRef1}
             onClick={() => handleNavigate("/")}
           >
             Home
           </p>
           <p
-            className="small-description white hover-text-white opacity"
+            className="description white hover-text-white opacity"
             ref={navigationBarCenterRef2}
             onClick={() => handleNavigate("/about")}
           >
             About
           </p>
           <p
-            className="small-description white hover-text-white opacity"
+            className="description white hover-text-white opacity"
             ref={navigationBarCenterRef3}
             onClick={() => handleNavigate("/works")}
           >
@@ -118,7 +120,7 @@ export const Navigation = () => {
           </button>
         </div>
         <div className="navigation-inside-right-mobile">
-          <div className="navigation-inside-right-mobile-line" />
+          <div className="navigation-inside`-right-mobile-line" />
           <div className="navigation-inside-right-mobile-line" />
           <div className="navigation-inside-right-mobile-line" />
         </div>
