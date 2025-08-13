@@ -1,45 +1,34 @@
 "use client";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { ReactLenis } from "lenis/react";
 import { SectionFooter } from "../Main/SectionFooter";
 import gsap from "gsap";
 import { TextPlugin } from "gsap/TextPlugin";
-import { SplitText } from "gsap/all";
-import { ScrollTrigger } from "gsap/all";
+import { SplitText, ScrollTrigger } from "gsap/all";
+import Image from "next/image";
 
 gsap.registerPlugin(SplitText, ScrollTrigger, TextPlugin);
 
-export const AboutPageSection = () => {
-  // ANIMATIONS
-
+export const AboutPageSection = ({}) => {
   const titleRef = useRef();
   const titleRef2 = useRef();
   const descriptionRef = useRef();
   const lineRef = useRef();
   const itemRefs = useRef([]);
+  const stickyRefs = useRef([]);
 
-  const teamMembers = [
-    { name: "Idan Zeidman", title: "Co-CEO & Co-Founder" },
-    { name: "Lorenzo Noya", title: "Co-CEO & Co-Founder" },
-    { name: "Matvey Vasilyev", title: "COO & Co-Founder" },
-    { name: "Rainer Ahi", title: "CTO" },
-    { name: "Romet Kriks", title: "Motion Graphics Designer" },
-    { name: "Sardor Xujamov", title: "Visualization Expert" },
-  ];
+  // ✅ Example dynamic structure
+  // You could also fetch this from Supabase, Contentful, etc.
+  const { headline, description, teamMembers, whyUs, stickySections } =
+    aboutData;
 
   useEffect(() => {
-    // title animation
+    // Headline animation
     const titleSplit = new SplitText(titleRef.current, { type: "chars" });
     gsap.fromTo(
       titleSplit.chars,
+      { filter: "blur(8px)", opacity: 0, yPercent: 50 },
       {
-        "will-change": "opacity, transform",
-        filter: "blur(8px)",
-        opacity: 0,
-        yPercent: 50,
-      },
-      {
-        delay: 0.2,
         opacity: 1,
         filter: "blur(0px)",
         yPercent: 0,
@@ -49,7 +38,6 @@ export const AboutPageSection = () => {
       }
     );
 
-    // description animation
     gsap.to(descriptionRef.current, {
       opacity: 1,
       filter: "blur(0px)",
@@ -57,18 +45,16 @@ export const AboutPageSection = () => {
       delay: 0.6,
     });
 
-    // line animation
     gsap.fromTo(
       lineRef.current,
       { opacity: 0, filter: "blur(8px)" },
       { opacity: 1, filter: "blur(0px)", duration: 0.5, delay: 0.5 }
     );
 
-    // title 2 animation
     const titleSplit2 = new SplitText(titleRef2.current, { type: "words" });
     gsap.fromTo(
       titleSplit2.words,
-      { "will-change": "opacity", filter: "blur(8px)", opacity: 0 },
+      { opacity: 0, filter: "blur(8px)" },
       {
         opacity: 1,
         filter: "blur(0px)",
@@ -77,13 +63,11 @@ export const AboutPageSection = () => {
         scrollTrigger: {
           trigger: titleRef2.current,
           start: "top 95%",
-          end: "bottom center",
           scrub: true,
         },
       }
     );
 
-    // team member boxes animations
     itemRefs.current.forEach((item, index) => {
       gsap.fromTo(
         item,
@@ -92,7 +76,6 @@ export const AboutPageSection = () => {
           yPercent: 0,
           opacity: 1,
           filter: "blur(0px)",
-          duration: 0.75,
           delay: index * 0.2,
           ease: "power3",
           scrollTrigger: {
@@ -102,58 +85,24 @@ export const AboutPageSection = () => {
         }
       );
     });
-  }, []);
 
-  // STICKY SECTION
-
-  const item1Ref = useRef(null);
-  const item2Ref = useRef(null);
-  const item3Ref = useRef(null);
-  const item4Ref = useRef(null);
-
-  useEffect(() => {
-    const refs = [item1Ref, item2Ref, item3Ref, item4Ref];
-
-    refs.forEach((ref, position) => {
-      const el = ref.current;
-      const isLast = position === refs.length - 1;
-
-      gsap.set(el, { willChange: "transform, filter" });
-
-      const timeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: el,
-          start: "center center",
-          end: "350%",
-          scrub: true,
-        },
-      });
-
-      timeline
-        .to(
-          el,
-          {
-            ease: "none",
-            startAt: { filter: "blur(0px)" },
-            filter: isLast ? "blur(0px)" : "blur(3px)",
-            scrollTrigger: {
-              trigger: el,
-              start: "center center",
-              end: "+=100%",
-              scrub: true,
-            },
+    stickyRefs.current.forEach((el, index) => {
+      const isLast = index === stickyRefs.current.length - 1;
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: el,
+            start: "center center",
+            end: "350%",
+            scrub: true,
           },
-          0
-        )
-        .to(
-          el,
-          {
-            ease: "none",
-            scale: isLast ? 1 : 0.55,
-            yPercent: isLast ? 0 : -45,
-          },
-          0
-        );
+        })
+        .to(el, {
+          filter: isLast ? "blur(0px)" : "blur(3px)",
+          scale: isLast ? 1 : 0.55,
+          yPercent: isLast ? 0 : -45,
+          ease: "none",
+        });
     });
   }, []);
 
@@ -161,23 +110,21 @@ export const AboutPageSection = () => {
     <ReactLenis root>
       <section className="about">
         <div className="about-content">
-          <div className="about-content-top">
+          {/* Top Section */}
+          {/* <div className="about-content-top">
             <div className="about-content-textbox">
-              <div className="titlebox">
-                <div className=" " />
-                <h1 className="headline white" ref={titleRef}>
-                  A Global Network Of Talent
-                </h1>
-              </div>
-              <p className="description grey opacity-blur" ref={descriptionRef}>
-                We&apos;ve assembled a team of dedicated professionals from
-                diverse backgrounds who share the same passion for your brand as
-                you do.
+              <h1 className="  text-white" ref={titleRef}>
+                {headline}
+              </h1>
+              <p className="  text-white opacity-blur" ref={descriptionRef}>
+                {description}
               </p>
             </div>
             <div className="about-divider" ref={lineRef} />
-          </div>
-          <div className="about-team">
+          </div> */}
+
+          {/* Team Section */}
+          {/* <div className="about-team">
             <div className="about-team-container">
               {teamMembers.map((member, index) => (
                 <div
@@ -190,124 +137,102 @@ export const AboutPageSection = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
+
+          {/* Why Us */}
           <div className="about-divider" />
           <div className="about-whyus">
-            <p className="description about-whyus-description grey">Why us</p>
-            <p
-              className="subheadline about-whyus-subheadline white"
-              ref={titleRef2}
-            >
-              At DialedWeb, we embody the startup mindset — dynamic, innovative,
-              and hungry to make a difference. We don&apos;t just create amazing
-              works; we partner with our clients to revolutionize their
-              industries through groundbreaking digital experiences. From
-              redefining brand engagement to boosting conversions, every project
-              we take on is an opportunity to challenge the norm, deliver
-              excellence, and leave an impact.
+            <p className="description grey">Why us</p>
+            <p className="subheadline white" ref={titleRef2}>
+              {whyUs}
             </p>
           </div>
+
+          {/* Sticky Sections */}
           <div className="about-divider" />
           <div className="about-sticky-container">
-            <div className="about-sticky-item" ref={item1Ref}>
-              <div className="about-sticky-item-left">
-                <div className="about-sticky-item-left-textbox">
-                  <h1 className="headline white">
-                    3D/2D <br /> Animation
+            {stickySections.map((section, i) => (
+              <div
+                className="about-sticky-item"
+                key={i}
+                ref={(el) => (stickyRefs.current[i] = el)}
+              >
+                <div className="about-sticky-item-left">
+                  <div className="about-sticky-item-left-textbox">
+                    <h1 className=" text-7xl font-bold text-white">
+                      {section.title}
+                    </h1>
+                    <p className=" text-xl text-white">{section.description}</p>
+                  </div>
+                  <h1 className="text-7xl text-white font-black">
+                    ({String(i + 1).padStart(2, "0")})
                   </h1>
-                  <p className="description about-sticky-item-left-textbox-description grey">
-                    Unlock the power of storytelling with our cutting-edge 2D
-                    and 3D animation. Whether you want to create vibrant
-                    characters or immersive worlds, our team combines artistic
-                    flair with technical expertise to bring your vision to life.
-                  </p>
                 </div>
-                <h1 className="headline white">(01)</h1>
-              </div>
-              <div className="about-sticky-item-right">
-                <div className="about-sticky-item-right-imagebox">
+                <div className="about-sticky-item-right">
                   <img
-                    src="/images/mockup4.webp"
-                    className="about-sticky-item-right-image"
-                    alt=""
+                    src={section.image}
+                    className="about-sticky-item-right-image rounded-2xl"
+                    alt={section.title}
                   />
                 </div>
               </div>
-            </div>
-            <div className="about-sticky-item" ref={item2Ref}>
-              <div className="about-sticky-item-left">
-                <div className="about-sticky-item-left-textbox">
-                  <h1 className="headline white">AI Tuning</h1>
-                  <p className="description about-sticky-item-left-textbox-description grey">
-                    Harness the potential of artificial intelligence to elevate
-                    your projects with our AI Tuning. By integrating intelligent
-                    solutions, we help you achieve precision and creativity that
-                    stand out in the competitive landscape.
-                  </p>
-                </div>
-                <h1 className="headline white">(02)</h1>
-              </div>
-              <div className="about-sticky-item-right">
-                <div className="about-sticky-item-right-imagebox">
-                  <img
-                    src="/images/mockup12.webp"
-                    className="about-sticky-item-right-image"
-                    alt=""
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="about-sticky-item" ref={item3Ref}>
-              <div className="about-sticky-item-left">
-                <div className="about-sticky-item-left-textbox">
-                  <h1 className="headline white">AR VR</h1>
-                  <p className="description about-sticky-item-left-textbox-description grey">
-                    Step into the future of interactive experiences with our
-                    Augmented Reality (AR) and Virtual Reality (VR) offerings.
-                    We create captivating environments that allow users to
-                    engage with your content in thrilling new ways, merging the
-                    digital and real worlds seamlessly.
-                  </p>
-                </div>
-                <h1 className="headline white">(03)</h1>
-              </div>
-              <div className="about-sticky-item-right">
-                <div className="about-sticky-item-right-imagebox">
-                  <img
-                    src="/images/mockup7.webp"
-                    className="about-sticky-item-right-image"
-                    alt=""
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="about-sticky-item" ref={item4Ref}>
-              <div className="about-sticky-item-left">
-                <div className="about-sticky-item-left-textbox">
-                  <h1 className="headline white">VFX</h1>
-                  <p className="description about-sticky-item-left-textbox-description grey">
-                    Transform your visuals into stunning spectacles with our
-                    top-notch Visual Effects (VFX). From breathtaking explosions
-                    to fantastical landscapes, we add that extra layer of magic
-                    that captivates viewers.
-                  </p>
-                </div>
-                <h1 className="headline white">(04)</h1>
-              </div>
-              <div className="about-sticky-item-right">
-                <div className="about-sticky-item-right-imagebox">
-                  <img
-                    src="/images/mockup11.webp"
-                    className="about-sticky-item-right-image"
-                    alt=""
-                  />
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
       <SectionFooter />
     </ReactLenis>
   );
+};
+export const aboutData = {
+  headline: "A Global Network Of Talent",
+  description:
+    "We've assembled a team of dedicated professionals from diverse backgrounds who share the same passion for your brand as you do.",
+  teamMembers: [
+    { name: "Idan Zeidman", title: "Co-CEO & Co-Founder" },
+    { name: "Lorenzo Noya", title: "Co-CEO & Co-Founder" },
+    { name: "Matvey Vasilyev", title: "COO & Co-Founder" },
+    { name: "Rainer Ahi", title: "CTO" },
+    { name: "Romet Kriks", title: "Motion Graphics Designer" },
+    { name: "Sardor Xujamov", title: "Visualization Expert" },
+  ],
+  whyUs:
+    "At Genie Aura, we embrace the creator’s mindset — curious, bold, and driven to make a real impact. We don’t just build digital products; we work side-by-side with our clients to spark ideas, shape visions, and transform industries through fresh, meaningful experiences. From elevating brands to unlocking growth, every project is our chance to push boundaries, deliver with excellence, and leave something unforgettable behind.",
+  stickySections: [
+    {
+      title: "Web Development",
+      description:
+        "Your website should be more than functional—it should resonate. We craft bespoke digital experiences that merge innovation with creativity, delivering intuitive, visually stunning platforms that captivate audiences, reflect your brand's essence, and adapt to future opportunities.",
+      image:
+        "https://cdn.dribbble.com/userupload/16992356/file/original-049acea0cb3b604de901dc87f7599cdd.png?resize=1504x1128&vertical=center",
+    },
+    {
+      title: "App Development",
+      description:
+        "We design and develop mobile applications that blend performance, usability, and visual appeal. Whether for iOS, Android, or cross-platform, our apps are built to engage users, solve real problems, and adapt as your business grows—ensuring a seamless experience across all devices.",
+      image:
+        "https://cdn.dribbble.com/userupload/16779043/file/original-f0fa9e97854c1b322ef711072fb0af9e.png?resize=1504x1128&vertical=center",
+    },
+    {
+      title: "Design",
+      description:
+        "Design is your brand's voice. We craft visuals and layouts that communicate purpose, inspire trust, and connect emotionally. By harmonizing artistry with intent, our designs transform user interactions into meaningful, memorable experiences that align with your identity.",
+      image:
+        "https://cdn.dribbble.com/userupload/43761533/file/original-baf87adce93177903189e8b859ae7246.png?resize=1504x1128&vertical=center",
+    },
+    {
+      title: "Software Development",
+      description:
+        "We build custom software that evolves with your business. By addressing unique challenges, our tailored solutions streamline workflows, eliminate inefficiencies, and foster innovation—empowering you to scale, adapt, and maintain a competitive edge in an ever-changing landscape.",
+      image:
+        "https://cdn.dribbble.com/userupload/13938052/file/original-e154238d1518af202edd1a06323eba77.png?resize=1504x1128&vertical=center",
+    },
+    {
+      title: "AI Automation",
+      description:
+        "Harness the potential of artificial intelligence to streamline your workflows, predict trends, and unlock new growth opportunities. From intelligent chatbots to predictive analytics, we integrate AI seamlessly into your processes—making them smarter, faster, and more adaptive.",
+      image:
+        "https://cdn.dribbble.com/userupload/17922532/file/original-d82d086e0aecdc408f71b055633e9d57.png?resize=1504x1128&vertical=center",
+    },
+  ],
 };
