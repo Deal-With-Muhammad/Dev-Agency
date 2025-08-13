@@ -264,7 +264,7 @@ export const SectionTechstack = () => {
             <h2 className="small-description grey">Our Techstack</h2>
           </div>
           <div className="titlebox">
-            <div className="titlebox-big-gradient" />
+            <div className=" " />
             <h1 className="subheadline white" ref={titleRef}>
               Integrating Powerful Tools To Create Seamless,{" "}
               <br className="hide-on-mobile" /> Scalable, And Innovative

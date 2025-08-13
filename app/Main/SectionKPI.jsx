@@ -102,7 +102,7 @@ export const SectionKPI = () => {
             </h2>
           </div>
           <div className="titlebox">
-            <div className="titlebox-gradient" />
+            <div className=" " />
             <h1 className="subheadline white" ref={titleRef}>
               Numbers That Just Make Sense
             </h1>

@@ -152,7 +152,7 @@ export const SectionHero = () => {
           <div className="hero-content-left">
             <div className="hero-textbox">
               <div className="hero-titlebox">
-                <div className="hero-titlebox-gradient" />
+                <div className="hero- " />
                 <h1 className="headline hero-headline white" ref={titleRef}>
                   Crafting Digital <br /> Masterpieces
                 </h1>

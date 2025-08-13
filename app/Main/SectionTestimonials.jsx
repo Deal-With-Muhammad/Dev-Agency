@@ -126,7 +126,7 @@ export const SectionTestimonials = () => {
             <h2 className="small-description grey">Accounting on autopilot</h2>
           </div>
           <div className="titlebox">
-            <div className="titlebox-big-gradient" />
+            <div className=" " />
             <h1 className="subheadline white" ref={titleRef}>
               Don&apos;t Take Our Word For It! <br />
               Hear It From Our Partners.

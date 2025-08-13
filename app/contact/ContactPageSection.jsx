@@ -171,7 +171,7 @@ export const ContactPageSection = () => {
         <div className="contact-content">
           <div className="contact-content-top">
             <div className="titlebox">
-              <div className="titlebox-gradient" />
+              <div className=" " />
               <h1 className="headline white" ref={titleRef}>
                 Get in Touch
               </h1>
