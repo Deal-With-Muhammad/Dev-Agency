@@ -1398,7 +1398,13 @@
 
 .flower-content-sequence {
   width: 100%;
-  height: 100%;
+  height: 100%; 
+}
+
+@media (max-width: 768px) {
+.flower-content-sequence { 
+    height: 40vh;  
+  }
 }
 
 .image-sequence-canvas {

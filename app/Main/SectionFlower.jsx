@@ -222,7 +222,7 @@ export const SectionFlower = () => {
                 Digital
               </h1>
             </span>
-            <span>
+            {/* <span>
               <div
                 className="flower-content-right-content-item"
                 ref={imageRef1}
@@ -233,7 +233,7 @@ export const SectionFlower = () => {
                   alt=""
                 />
               </div>
-            </span>
+            </span> */}
           </div>
           <div className="flower-content-textbox-item">
             <span>
@@ -258,7 +258,7 @@ export const SectionFlower = () => {
                 Vision
               </h1>
             </span>
-            <span>
+            {/* <span>
               <div
                 className="flower-content-right-content-item"
                 ref={imageRef2}
@@ -269,7 +269,7 @@ export const SectionFlower = () => {
                   alt=""
                 />
               </div>
-            </span>
+            </span> */}
             <span>
               <h1 className="subheadline text-white" ref={textRef8}>
                 Bloom

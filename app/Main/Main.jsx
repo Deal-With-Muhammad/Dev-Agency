@@ -2,16 +2,14 @@
 import { ReactLenis, useLenis } from "lenis/react";
 import { SectionHero } from "./SectionHero";
 import { SectionFooter } from "./SectionFooter";
-import { SectionShowreel } from "./SectionShowreel";
 import { SectionTestimonials } from "./SectionTestimonials";
 import { SectionTechstack } from "./SectionTechstack";
 import { SectionFlower } from "./SectionFlower";
 import { SectionServices } from "./SectionServices";
 import { SectionProjects } from "./SectionProjects";
-import { SectionProjectsMobile } from "./SectionProjectsMobile";
 import { SectionKPI } from "./SectionKPI";
 import "./main.css";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { useProgress } from "@react-three/drei";
 
 const Main = () => {
@@ -46,7 +44,6 @@ const Main = () => {
       <SectionServices />
       <div className="normal-padding" />
       <SectionProjects />
-      <SectionProjectsMobile />
       <div className="normal-padding" />
       <SectionTechstack />
       <div className="normal-padding" />
