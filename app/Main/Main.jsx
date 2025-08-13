@@ -11,6 +11,7 @@ import { SectionKPI } from "./SectionKPI";
 import "./main.css";
 import { useLayoutEffect, useState } from "react";
 import { useProgress } from "@react-three/drei";
+import Loading from "../loading";
 
 const Main = () => {
   const { progress } = useProgress();
@@ -28,11 +29,7 @@ const Main = () => {
     <ReactLenis root>
       <div className={`initial-loading-screen ${fadeOut ? "fade-out" : ""}`}>
         <div className="loading-image-box">
-          <img
-            src="/images/loading.gif"
-            className="loading-image"
-            alt="Loading Image"
-          />
+          <Loading />
         </div>
       </div>
       <SectionHero />
