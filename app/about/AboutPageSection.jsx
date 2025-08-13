@@ -5,7 +5,6 @@ import { SectionFooter } from "../Main/SectionFooter";
 import gsap from "gsap";
 import { TextPlugin } from "gsap/TextPlugin";
 import { SplitText, ScrollTrigger } from "gsap/all";
-import Image from "next/image";
 
 gsap.registerPlugin(SplitText, ScrollTrigger, TextPlugin);
 
