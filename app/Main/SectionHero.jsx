@@ -298,7 +298,7 @@ export const SectionHero = () => {
         </div>
       </div>
       <div className="hover-cursor" ref={cursor}>
-        <p className="small-description black">Drag</p>
+        <p className="small-description text-black">Drag</p>
       </div>
     </section>
   );

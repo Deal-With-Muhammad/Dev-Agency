@@ -283,7 +283,7 @@ export const SectionProjects = () => {
         </div>
       </div>
       <div className="hover-cursor" ref={cursor}>
-        <p className="small-description white">See More</p>
+        <p className="small-description text-white">See More</p>
       </div>
     </section>
   );
