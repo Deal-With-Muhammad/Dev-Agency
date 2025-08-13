@@ -48,7 +48,7 @@ export const SectionKPI = () => {
       price: "$20,000",
       priceUnit: "Starting at",
       description:
-        "Tailored Customer Relationship Management systems designed to streamline your business processes and enhance customer interactions.",
+        "Tailored Customer Relationship Management systems designed to streamline your business processes, and enhance every customer interaction for maximum efficiency.",
       features: [
         "Lead Management",
         "Analytics Dashboard",
@@ -135,13 +135,13 @@ export const SectionKPI = () => {
             const Icon = service.icon;
             return (
               <div
-                className="group relative bg-white border-2 border-black rounded-2xl p-8 hover:bg-black hover:text-white transition-all duration-300"
+                className="group relative bg-[#fafafa] bg-gradient-to-b from-[#fafafa]  to-[#eaeaea] border-1 border-[#eaeaea] rounded-4xl p-8 hover:bg-black hover:from-black hover:to-[#363636] hover:text-white transition-colors  duration-500 ease-in-out "
                 key={index}
                 ref={(el) => (boxRefs.current[index] = el)}
               >
                 {/* Icon - changed to simple black background */}
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-black group-hover:bg-white mb-6">
-                  <Icon className="w-6 h-6 text-white group-hover:text-black" />
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-black  mb-6">
+                  <Icon className="w-6 h-6 text-white " />
                 </div>
 
                 {/* Service title - changed to black text with hover white */}
