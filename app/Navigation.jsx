@@ -74,8 +74,9 @@ export const Navigation = () => {
       <div className="navigation-inside" ref={navigationBar}>
         <div className="navigation-inside-left">
           <Image
+            onClick={() => handleNavigate("/")}
             src="/logo.png"
-            className="navigation-inside-left-image"
+            className="navigation-inside-left-image cursor-pointer"
             alt=""
             height={300}
             width={300}
