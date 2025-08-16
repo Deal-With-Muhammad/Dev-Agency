@@ -874,7 +874,7 @@ section {
   /* <CHANGE> Changed white border to dark border */
   border: 1px solid rgba(26, 26, 26, 0.05);
   /* <CHANGE> Changed white background to dark background */
-  background-color: rgba(26, 26, 26, 0.05);
+  background-color: #ffffff96;
   backdrop-filter: blur(5px);
   display: flex;
   justify-content: space-between;
