@@ -209,7 +209,7 @@ export const SectionProjects = () => {
             <div className="projects-carousel-row">
               <div className="projects-carousel-item">
                 <Image
-                  src="/mockups/heave.webp"
+                  src="/mockups/kopit.png"
                   width={1920}
                   height={1080}
                   unoptimized
@@ -219,9 +219,9 @@ export const SectionProjects = () => {
               </div>
               <div className="projects-carousel-item">
                 <Image
-                  src="/mockups/essentia.webp"
-                  width={1920}
-                  height={1080}
+                  src="/mockups/ferrati.png"
+                  width={1220}
+                  height={1280}
                   unoptimized
                   className="projects-carousel-item-image"
                   alt=""

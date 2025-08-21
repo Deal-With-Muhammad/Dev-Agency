@@ -142,7 +142,7 @@ export const SectionProjectsMobile = () => {
             <div className="projects-carousel-row">
               <div className="projects-carousel-item">
                 <Image
-                  src="/mockups/heave.webp"
+                  src="/mockups/kopit.png"
                   width={1920}
                   height={1080}
                   unoptimized
@@ -152,7 +152,7 @@ export const SectionProjectsMobile = () => {
               </div>
               <div className="projects-carousel-item">
                 <Image
-                  src="/mockups/essentia.webp"
+                  src="/mockups/ferrati.png"
                   width={1920}
                   height={1080}
                   unoptimized

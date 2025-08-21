@@ -27,14 +27,14 @@ export const WORK_ITEMS: WorkItem[] = [
     id: "kinimatic",
     title: "Kinimatic",
     services: ["Web Design & Development", "Branding"],
-    image: "/mockups/heave.webp",
+    image: "/mockups/kopit.png",
     alt: "Kinimatic project mockup",
   },
   {
     id: "vita-lenta-1",
     title: "Vita Lenta",
     services: ["Web Design & Development", "Branding"],
-    image: "/mockups/essentia.webp",
+    image: "/mockups/ferrati.png",
     alt: "Vita Lenta project mockup",
   },
   {
