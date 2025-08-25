@@ -92,42 +92,10 @@ export default function ContactPage() {
           ease: "power2.out",
         },
         "-=0.5"
-      )
-      // Animate contact cards
-      .fromTo(
-        contactCardsRef.current.children,
-        {
-          opacity: 0,
-          x: 50,
-          y: 30,
-        },
-        {
-          opacity: 1,
-          x: 0,
-          y: 0,
-          duration: 0.8,
-          stagger: 0.1,
-          ease: "power2.out",
-        },
-        "-=0.7"
-      )
-      // Animate bottom CTA
-      .fromTo(
-        ctaRef.current,
-        {
-          opacity: 0,
-          y: 30,
-          scale: 0.9,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.8,
-          ease: "back.out(1.7)",
-        },
-        "-=0.3"
       );
+    // Animate contact cards
+
+    // Animate bottom CTA
 
     // Animate form fields on mount
     const formFields = formRef.current.querySelectorAll(".form-field");
@@ -199,7 +167,7 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen relative pt-[10vh] overflow-hidden">
-      <div className="relative z-10 px-4 py-20">
+      <div className="relative px-4 py-20">
         <div className="max-w-6xl mx-auto">
           {/* Hero Section */}
           <div className="text-center mb-20">
@@ -225,7 +193,7 @@ export default function ContactPage() {
             <div className="">
               <div
                 ref={formRef}
-                className="bg-white rounded-3xl shadow-2xl p-10 border border-gray-100 relative overflow-hidden"
+                className=" rounded-3xl shadow-2xl p-10 border border-gray-100 relative overflow-hidden"
               >
                 <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-black via-gray-600 to-black"></div>
 
