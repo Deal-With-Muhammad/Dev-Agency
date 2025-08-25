@@ -223,7 +223,7 @@ export const SectionProjects = () => {
                   width={1220}
                   height={1280}
                   unoptimized
-                  className="projects-carousel-item-image"
+                  className=""
                   alt=""
                 />
               </div>
